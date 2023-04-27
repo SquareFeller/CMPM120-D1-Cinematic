@@ -5,8 +5,90 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Isai Rincon - Cinematic: Garden of Solitude</title>
-    <script src="code.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.60.0/phaser.js" integrity="sha512-H05oT7BAjM9Ai1IaFX9zr61NtE2e1P0MkTz3AZXBnseaJSAOt2FGMFJ+vVGutaJxEGA1jxUiYsTBYQNE08/Erw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        //booting up game screen
+        class Intro extends Phaser.Scene{
+            constructor(){
+                super('intro');
+            }
+            
+            preload(){
+
+            }
+
+            create(){
+                this.add.text(240, 180, "Now playing...");
+            }
+
+            update(){
+
+            }
+        }
+
+        //studio splash screen
+        class Studio extends Phaser.Scene{
+            constructor(){
+                super('studio');
+            }
+            
+            preload(){
+
+            }
+
+            create(){
+
+            }
+
+            update(){
+
+            }
+        }
+
+        //loading screen 
+        class Loading extends Phaser.Scene{
+            constructor(){
+                super('loading');
+            }
+            
+            preload(){
+
+            }
+
+            create(){
+
+            }
+
+            update(){
+
+            }
+        }
+
+        //title screen
+        class Main extends Phaser.Scene{
+            constructor(){
+                super('main');
+            }
+            
+            preload(){
+
+            }
+
+            create(){
+
+            }
+
+            update(){
+
+            }
+        }
+
+        new Phaser.Game({
+            width: 640,
+            height: 400,
+            scene: [Intro, Studio, Loading, Main]
+        });
+    </script>
 </head>
 <body>
     
