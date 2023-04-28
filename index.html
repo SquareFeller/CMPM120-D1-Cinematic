@@ -18,7 +18,12 @@
             }
 
             create(){
-                this.add.text(240, 180, "Now playing...");
+                this.add.text(240, 180, "Now playing...", {color: '#000000'});
+                this.time.delayedCall(50000, this.scene.start('intro'));
+                //cool_t.setInteractive();
+                //let shadow = cool_t.preFX.addShadow(0.5,0, 0.1, 1, 0x0000, 3, 1);
+                //this.cameras.main.setBackgroundColor('#ffb6c1');
+
             }
 
             update(){
@@ -37,7 +42,7 @@
             }
 
             create(){
-
+                this.cameras.main.setBackgroundColor('#ffb6c1');
             }
 
             update(){
@@ -86,7 +91,9 @@
         new Phaser.Game({
             width: 640,
             height: 400,
+            backgroundColor: '#d3d3d3',
             scene: [Intro, Studio, Loading, Main]
+            
         });
     </script>
 </head>
