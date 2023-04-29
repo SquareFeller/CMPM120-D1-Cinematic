@@ -19,7 +19,23 @@
 
             create(){
                 this.add.text(240, 180, "Now playing...", {color: '#000000'});
-                this.time.delayedCall(50000, this.scene.start('intro'));
+                this.time.delayedCall(2000, () => {
+                    //this.cameras.main.fadeOut(2000, 0, 0, 0);
+                    //this.scene.start('studio');
+                    this.scene.transition({
+                        target: 'studio',
+                        duration: 800,
+
+                    });
+            });
+                // this.time.delayedCall(4000, () =>{
+                //     this.scene.start('studio');
+                //     //this.scene.start('studio');
+                // });
+               // this.time.delayedCall(6000, () =>{
+                 //   this.scene.start('studio');
+               // });
+                
                 //cool_t.setInteractive();
                 //let shadow = cool_t.preFX.addShadow(0.5,0, 0.1, 1, 0x0000, 3, 1);
                 //this.cameras.main.setBackgroundColor('#ffb6c1');
@@ -38,11 +54,16 @@
             }
             
             preload(){
-
+                this.load.image('logo', 'assets/studiologo.jpg');
             }
 
             create(){
-                this.cameras.main.setBackgroundColor('#ffb6c1');
+                    this.cameras.main.fadeIn(2000);
+                    this.cameras.main.setBackgroundColor('#949494');
+                    let frame = this.add.rectangle(325, 180, 200, 160, '0xffffff');
+                    let logo = this.add.sprite(325, 180, 'logo');
+                    logo.setScale(0.2, 0.2);
+                    let s_text = this.add.text(215, 270, "Next Slide Studio", {fontFamily: "noto", fontSize: 32});
             }
 
             update(){
@@ -57,11 +78,12 @@
             }
             
             preload(){
-
+                this.load.image('loading', 'assets/loading.jpg');
+                this.load.audio('whistle', 'assets/SHORTER_BeepBox-Whistle.mp3');
             }
 
             create(){
-
+                this.cameras.main.fadeIn(2000);
             }
 
             update(){
@@ -76,7 +98,9 @@
             }
             
             preload(){
-
+                this.load.image('main', 'assets/title_screen.jpg');
+                this.load.image('title', 'assets/Garden_of_Solitude.png');
+                this.load.audio('nature', 'assets/BETTER_Ambient_Nature.wav');
             }
 
             create(){
@@ -88,7 +112,7 @@
             }
         }
 
-        new Phaser.Game({
+        const game = new Phaser.Game({
             width: 640,
             height: 400,
             backgroundColor: '#d3d3d3',
