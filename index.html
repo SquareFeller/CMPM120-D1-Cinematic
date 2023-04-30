@@ -18,7 +18,7 @@
             }
 
             create(){
-                this.add.text(240, 180, "Now playing...", {color: '#000000'});
+                this.add.text(240, 180, "Now playing... (Please click)", {color: '#000000'});
                 this.time.delayedCall(2000, () => {
                     this.scene.transition({
                         target: 'studio',
