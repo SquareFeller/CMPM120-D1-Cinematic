@@ -1,6 +1,8 @@
 # CMPM120-D1-Cinematic
 A cinematic for the D1 assignment for CMPM 120.
 
+## Note: Please click on the very first scene to have audio work. 
+
 ## Key Requirements:
 #### **3+ distinct visual scenes (with distinct “Scene” classes):** The three distinct scenes are comprised of the scene with the gray background and the studio logo and name, the scene with background image of trees with the arrow that flies across the screen, and the scene with the water, title, and menu. 
 #### **2+ audio assets (e.g. background music and a sound effect):** The two audio assets were the brief "whistle" sound that plays once the arrow has flown across, rotated, and become a full arrow, and the second audio asset is the background sound that plays during the last scene.
