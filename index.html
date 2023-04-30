@@ -20,26 +20,12 @@
             create(){
                 this.add.text(240, 180, "Now playing...", {color: '#000000'});
                 this.time.delayedCall(2000, () => {
-                    //this.cameras.main.fadeOut(2000, 0, 0, 0);
-                    //this.scene.start('studio');
                     this.scene.transition({
                         target: 'studio',
                         duration: 800,
 
                     });
-            });
-                // this.time.delayedCall(4000, () =>{
-                //     this.scene.start('studio');
-                //     //this.scene.start('studio');
-                // });
-               // this.time.delayedCall(6000, () =>{
-                 //   this.scene.start('studio');
-               // });
-                
-                //cool_t.setInteractive();
-                //let shadow = cool_t.preFX.addShadow(0.5,0, 0.1, 1, 0x0000, 3, 1);
-                //this.cameras.main.setBackgroundColor('#ffb6c1');
-
+                });
             }
 
             update(){
@@ -64,6 +50,13 @@
                     let logo = this.add.sprite(325, 180, 'logo');
                     logo.setScale(0.2, 0.2);
                     let s_text = this.add.text(215, 270, "Next Slide Studio", {fontFamily: "noto", fontSize: 32});
+                    this.time.delayedCall(6000, () => {
+                        this.cameras.main.fadeOut(1000);
+                        this.scene.transition({
+                            target: 'loading',
+                            duration: 1000,
+                        });
+                    });
             }
 
             update(){
@@ -78,12 +71,48 @@
             }
             
             preload(){
-                this.load.image('loading', 'assets/loading.jpg');
+                this.load.image('load', 'assets/loading.jpg');
                 this.load.audio('whistle', 'assets/SHORTER_BeepBox-Whistle.mp3');
+                this.load.image('arrow', 'assets/arrow.png');
+                this.load.image('filled_arrow', 'assets/filled_arrow.png');
             }
 
             create(){
-                this.cameras.main.fadeIn(2000);
+                this.cameras.main.fadeIn(2000, 0, 44, 0);
+                this.add.sprite(325, 180, 'load');
+                let arrow = this.add.sprite(60, 320, 'arrow');
+                arrow.setScale(0.35, 0.35);
+
+                this.time.delayedCall(2000, () => {
+                    this.add.tween({
+                        targets: arrow,
+                        duration: 1500,
+                        ease: 'Linear',
+                        x: {from: 60, to: 565}
+                    });
+                });
+
+                this.time.delayedCall(3500, () => {
+                    this.add.tween({
+                        targets: arrow,
+                        angle: '+=360',
+                        duration: 1200
+                    });
+                });
+                
+                this.time.delayedCall(4700, () =>{
+                    this.add.sprite(565, 320, 'filled_arrow').setScale(0.35, 0.35);
+                    this.sound.add('whistle');
+                    this.sound.play('whistle');
+                });
+
+                this.time.delayedCall(6000, () => {
+                    this.cameras.main.fadeOut(1500, 0, 0, 0);
+                    this.scene.transition({
+                            target: 'main',
+                            duration: 500
+                    });
+                });
             }
 
             update(){
@@ -98,15 +127,59 @@
             }
             
             preload(){
-                this.load.image('main', 'assets/title_screen.jpg');
+                this.load.image('game_screen', 'assets/title_screen.jpg');
                 this.load.image('title', 'assets/Garden_of_Solitude.png');
                 this.load.audio('nature', 'assets/BETTER_Ambient_Nature.wav');
             }
 
             create(){
+                this.cameras.main.fadeIn(2000, 0, 0, 0);
 
+                this.time.delayedCall(1000, () =>{
+                   this.sound.add('nature', {loop: true, volume: 0.35});
+                   this.sound.play('nature', {loop: true, volume: 0.35}); 
+                });
+
+                this.add.sprite(0,280, 'game_screen').setScale(1,0.5);
+                let content = [
+                    'Begin',
+                    'Settings',
+                    'Quit'
+                ];
+                let words = this.add.text(320, 400, content, {fontSize: 26});
+                let name = this.add.sprite(300, 100, 'title').setScale(0.2, 0.2);
+                name.alpha = 0;
+
+                this.time.delayedCall(1500, () => {
+                    this.add.tween({
+                        targets: name,
+                        alpha: 1,
+                        duration: 2500
+                    });
+                });
+
+                this.time.delayedCall(4000, () =>{
+                    this.add.tween({
+                        targets: words,
+                        duration: 800, 
+                        y: {from: 425, to: 300}
+                    });
+                });
+
+                this.time.delayedCall(5000, () =>{
+                    let tri = this.add.triangle(300, 312, 0, 128, 128, 128, 74, 0, 0xffff00);
+                    tri.angle = 90;
+                    tri.setScale(0.2, 0.2);
+                    tri.alpha = 0;
+                    this.time.delayedCall(2000, () => {
+                        this.add.tween({
+                            targets: tri,
+                            alpha: 1,
+                            duration: 750
+                        });
+                    });
+                }); 
             }
-
             update(){
 
             }
